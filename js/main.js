@@ -94,16 +94,13 @@ Promise.all([
   });
 
   function resetCharts() {
-    // Reset selected values to initial state
-    selectedMetric = 'cases';
-    selectedDateIndex = 0;
     selectedLocations = [];
 
     // Update charts with reset values
     bubbleMap.updateMetric(selectedMetric);
     bubbleMap.updateDateIndex(selectedDateIndex);
     bubbleMap.updateLocations(selectedLocations);
-    // bubbleMap.redraw();
+    bubbleMap.redraw();
 
     multiLine.updateMetric(selectedMetric);
     multiLine.updateDateIndex(selectedDateIndex);
@@ -118,7 +115,6 @@ Promise.all([
     // Hide the footer
     footer.style('display', 'none');
   }
-
   // Add event listener to update the selected date index when the scrubber is manually adjusted
   d3.select(scrubber).on('input', (event) => {
     updateSelectedDateIndex(event.target.valueAsNumber);
