@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid Dashboard</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="js/legend.js"></script>
+    <script src="js/scrubber.js"></script>
+    <script src="js/bubble-map.js"></script>
+    <script src="js/multi-line.js"></script>
+    <script src="js/stacked-area.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1>COVID-19 Dashboard</h1>
+        <ul>
+          <li>Use the slider to change the date.</li>
+          <li>Use the radio buttons to change the metric.</li>
+          <li>Click up to 5 bubbles on the map visualize the trend.</li>
+          <li>
+            Data source:
+            <a
+              href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series"
+              target="_blank"
+              >COVID-19 Data GitHub Repository by Johns Hopkins University</a
+            >
+          </li>
+          <li>
+            The last day of recovery data is 2021-08-04.
+          </li>
+        </ul>
+      </section>
+      <section>
+        <div id="scrubber"></div>
+      </section>
+      <section>
+        <fieldset id="metric">
+          <legend>COVID-19 Metric</legend>
+          <label>
+            <input type="radio" value="cases" name="metric" checked />
+            Total Cases
+          </label>
+          <label>
+            <input type="radio" value="new cases" name="metric" />
+            Daily Cases
+          </label>
+          <label>
+            <input type="radio" value="deaths" name="metric" />
+            Deaths
+          </label>
+          <label>
+            <input type="radio" value="recovery" name="metric" />
+            Recovery
+          </label>
+        </fieldset>
+      </section>
+      <section>
+        <label for="dateSelector">Select Date:</label>
+        <select id="dateSelector"></select>
+      </section>
+      <section>
+        <button id="resetButton">Reset Map</button>
+      </section>
+    </header>
+    <main id="bubbleMap"></main>
+    <footer>
+      <section>
+        <div id="legend"></div>
+        <div class="charts">
+          <div id="multiLine"></div>
+          <div id="stackedArea"></div>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
